@@ -2,13 +2,7 @@
 layout: home
 title: Welcome!
 ---
-
-<div style="position: relative;">
-    <img src="assets/img/cover.jpg" alt="Cover Photo" style="width: 100%; height: auto;" />
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
-    </div>
-</div>
-
+<meta name="twitter:image" content="assets/img/cover.jpg">
 <i>The picture is from my last boat trip around the Komodo islands in Indonesia. It is a magical place with amazing views, beaches, people, and also mystical dragons. I strongly recommend everyone to visit it. </i>
 
 ---
