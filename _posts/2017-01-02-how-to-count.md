@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Teaching a model how to count with Logistic regression"
-subtitle: In this quick post, we will learn how to build a Logistic regression model from scratch that learns how to count digits. The idea is that the model will learn how to count from 0 to 9 in binary; if you give it an input of 0100 (that's 4 in binary), it outputs a 0000010000 or a '5'; Since we have 10 possible classes (0 -> 9), our resulting output for one set of inputs may look like this \[0000000001\] or this \[1000000000\], if the output is 0.
+subtitle: In this quick post, we will learn how to build a Logistic regression model from scratch that learns how to count digits. The idea is that the model will learn how to count from 0 to 9 in binary.
 cover-img: /assets/img/path.jpg
 thumbnail-img: /assets/img/thumb.png
 share-img: /assets/img/path.jpg
@@ -9,6 +9,7 @@ tags: [books, test]
 author: Fares Ben Slimane
 date:   2017-01-02
 ---
+
 
 ##### Requirements :
 
@@ -26,7 +27,6 @@ In this quick post, we will learn how to build a Logistic regression model from 
   
 Ok, great now let's start coding.
 
-  
 
 First, we need a function that transforms decimal digits into binaries. For the inputs, a '1' will become a 0001 and for the outputs, a '1' will become a 0000000001. We use this function on train and test sets, to transform our data to binaries.
 
