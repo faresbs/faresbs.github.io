@@ -54,7 +54,6 @@ Positive force and a good motivator, Effective in both spoken and written Englis
 # Projects
 
 - **Sign Language Recognition & Translation (2019)**
-
 Build a system that interprets a sequence of images, representing sign language, and generates a coherent textual translation
 in spoken language. 
 - [GitHub project Link](https://github.com/faresbs/san)
