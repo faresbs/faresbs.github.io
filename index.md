@@ -3,12 +3,9 @@ layout: home
 title: Welcome!
 ---
 
-<div class="cover">
-    <img src="assets/img/cover.jpg" alt="Cover Photo">
-    <div class="cover-content">
-        <!-- Your centered content goes here -->
-        <h1>Hello and welcome!</h1>
-        <p><i>The picture is from my last boat trip around the Komodo islands in Indonesia...</i></p>
+<div style="position: relative;">
+    <img src="assets/img/cover.jpg" alt="Cover Photo" style="width: 100%; height: auto;" />
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
     </div>
 </div>
 
