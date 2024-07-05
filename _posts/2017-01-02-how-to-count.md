@@ -254,11 +254,14 @@ def count(a, c, W, b, dim):
   
 Now, let's visualize the learning curves to plot the costs through the iterations by using different learning rates.  
   
+<div align="center">
 
 ![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.1).png)
 
 ![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.01).png)
 
 ![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.001).png)
+
+</div>
 
 And that’s it! I hope I gave you a sense of how logistic regression actually works. You can find the whole code source in ([here](https://github.com/faresbs/Machine-learning-Applications/blob/master/Logistic%20regression/Logistic_regression_digit_count.py)).
