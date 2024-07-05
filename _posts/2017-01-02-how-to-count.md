@@ -2,10 +2,10 @@
 layout: post
 title:  "Teaching a model how to count with Logistic regression"
 subtitle: In this quick post, we will learn how to build a Logistic regression model from scratch that learns how to count digits. The idea is that the model will learn how to count from 0 to 9 in binary.
-cover-img: /assets/img/path.jpg
+cover-img: /assets/img/posts/images_2017-01-02/cover.jpg
 thumbnail-img: /assets/img/thumb.png
-share-img: /assets/img/path.jpg
-tags: [books, test]
+share-img: /assets/img/posts/images_2017-01-02/cover.jpg
+tags: [ML, Classification, Supervised]
 author: Fares Ben Slimane
 date:   2017-01-02
 ---
