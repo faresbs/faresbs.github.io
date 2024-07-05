@@ -2,6 +2,14 @@
 layout: page
 ---
 
+<div style="position: relative; margin: 0; padding: 0;">
+    <img src="{{ site.baseurl }}/assets/img/cover.jpg" alt="Cover Photo" style="width: 100%; height: auto;" />
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+        <h1>Welcome!</h1>
+        <p>The picture is from my last boat trip around the Komodo islands in Indonesia. It is a magical place with amazing views, beaches, people, and also mystical dragons. I strongly recommend everyone to visit it.</p>
+    </div>
+</div>
+
 {{ content }}
 
 {% assign posts = paginator.posts | default: site.posts %}
