@@ -53,20 +53,20 @@ Positive force and a good motivator, Effective in both spoken and written Englis
 
 # Projects
 
-## Sign Language Recognition & Translation (2019)
+### Sign Language Recognition & Translation (2019)
 
 Build a system that interprets a sequence of images, representing sign language, and generates a coherent textual translation
 in spoken language. 
 - [GitHub project Link](https://github.com/faresbs/san)
 
-## Sign Language Tutoring System
+### Sign Language Tutoring System
 An automated system that teaches sign language to non-deaf users, featuring real-time gesture recognition and an ergonomic Human-Machine Interaction Interface.
 - [GitHub project Link](https://github.com/faresbs/sign-language-tutor)
 
-## Using AI for Automated Hydroponic Growing System
+### Using AI for Automated Hydroponic Growing System
 A smart hydroponic system that uses AI to control indoor settings and detect plant anomalies and diseases.
 
-## Tracking and Predicting Student Performance
+### Tracking and Predicting Student Performance
 A predictive model that tracks students' academic performance and forecasts future success using data from UQAM's SPARI.
 
 # Publications and Talks
@@ -74,5 +74,8 @@ A predictive model that tracks students' academic performance and forecasts futu
 - **Conference Paper**: Context Matters: Self-Attention for Sign Language Recognition (ICPR 2020)
 [Arxiv Link](https://arxiv.org/abs/2101.04632)
 
+
+---
+---
 
 # Latest Posts
