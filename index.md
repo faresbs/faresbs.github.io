@@ -4,7 +4,7 @@ title: Welcome!
 ---
 
 <div style="position: relative;">
-    <img src="images/cover.jpg" alt="Cover Photo" style="width: 100%; height: auto;" />
+    <img src="assets/img/cover.jpg" alt="Cover Photo" style="width: 100%; height: auto;" />
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
     </div>
 </div>
@@ -20,7 +20,7 @@ My name is **Fares Ben Slimane**, and I am a Computer Vision and AI enthusiast. 
 ## About Me
 
 <div style="text-align: center;">
-    <img src="images/profile.jpg" alt="Fares Ben Slimane" style="width:200px; border-radius: 50%;" />
+    <img src="assets/img/profile.jpg" alt="Fares Ben Slimane" style="width:200px; border-radius: 50%;" />
 </div>
 
 ---
