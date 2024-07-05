@@ -31,7 +31,7 @@ Ok, great now let's start coding.
 First, we need a function that transforms decimal digits into binaries. For the inputs, a '1' will become a 0001 and for the outputs, a '1' will become a 0000000001. We use this function on train and test sets, to transform our data to binaries.
 
   
-
+```python
 def transform\_to\_binary(X, y, dim, classes):
     m = len(X)
     bin\_X = np.zeros((dim, m))
@@ -49,7 +49,7 @@ def transform\_to\_binary(X, y, dim, classes):
         bin\_y\[i, :\] = temp
         temp\[y\[i\]\] = 0
     return bin\_X, bin\_y    
-
+```
   
 
 Second, we define our activation function. In our case, we will use a sigmoid or logistic function. That will map any real number to a (0, 1) interval, to give us a probability of our output.
@@ -57,18 +57,18 @@ Second, we define our activation function. In our case, we will use a sigmoid or
 ![Responsive image](/assets/img/posts/images_2017-01-02/sigmoid_function.png)
 
   
-
+```python
 \# Activation function
 def sigmoid(z):
     s = 1 / (1 + np.exp(-z))
     return s
-
+```
   
 
 Third, we initialize the parameters of the model with zeros, the biases b and the weights W.
 
   
-
+```python
 \# Initialize our parameters (weights W and bias b with zeros) 
 def initialize(dim, classes):
     w = None
@@ -76,14 +76,15 @@ def initialize(dim, classes):
     w = np.zeros((dim, classes))
     b = np.zeros((1, classes))
     return w, b 
-
+```
   
 
 We define our cost function that compares the results of the hypothesis with inputs from X's and the actual output Y's. Our cost function is called cross entropy and looks like this:
 
   
-$$Cost := - \\frac{1}{m} \\sum\_{i} ({y\_i \\log(\\hat{y\_i}) + (1-y\_i) \\log (1-\\hat{y\_i})})$$  
+$Cost := - \\frac{1}{m} \\sum\_{i} ({y\_i \\log(\\hat{y\_i}) + (1-y\_i) \\log (1-\\hat{y\_i})})$  
 
+```python
 def cost\_function(A, y):
     m = np.shape(y)\[1\]
     J = 0
@@ -96,7 +97,7 @@ def cost\_function(A, y):
     J = float("{0:.3f}".format(J))
 
     return J
-
+```
   
 
 And finally we implement 'propagate' that have 3 main functionalities:  
@@ -106,7 +107,7 @@ And finally we implement 'propagate' that have 3 main functionalities:
 this is done inside two loops, one that loops through all the classes, we have 10 classes (0 -> 9) and the second is the number of iterations.
 
   
-
+```python
 def propagate(X, y, dim, iter, l\_rate):
     m = np.shape(X)\[1\]
     classes = np.shape(y)\[1\]
@@ -139,7 +140,7 @@ def propagate(X, y, dim, iter, l\_rate):
     #print all\_W
     #print all\_b
     return all\_W, all\_b, costs
-
+```
   
 
 ##### Note:
@@ -153,7 +154,7 @@ How cool is that!
 After the optimization process, we get all our weights and biases for the 10 different classes, we use them to predict our probability values and we choose the one with the highest probability. If you print all\_A, it will display a matrix with the number of examples as it's column count and 10 rows (since we have 10 classes (0->9)). for every column (or for every example in our test set), we pick the one with the highest probability using the `np.argmax` [(see numpy doc here).](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.argmax.html)
 
   
-
+```python
 def predict(a, W, b, dim):
     all\_A =\[\]
     classes = np.shape(W)\[1\]
@@ -176,28 +177,34 @@ def predict(a, W, b, dim):
     # Choose the index of the one with the highest probability
 
     return np.argmax(all\_A)
-
+```
   
 And that's it, we're done.  
 We train our models using our train set.
 
+```python
 train\_x = \[0, 1, 2, 3, 4, 5, 6, 7, 8, 9\]
 train\_y = \[1, 2, 3, 4, 5, 6, 7, 8, 9, 0\]
+```
 
 First, transform them to binary using the transform\_to\_binary function. Then, the propagation and optimization process through the 'propagate' function. We give it a learning rate of 0.01 and a number of iterations of 1000.
 
+```python
 W, b, costs = propagate(X, y, 4, 1000, 0.01)
-
+```
   
 We test it using our predict function.
 
+```python
 print predict(1, W, b, 4)
+```
 
 If we give it a '1', it outputs a '2'.  
 Awesome, it worked!  
   
 Now let's test it on a set of numbers.  
 
+```python
 def predict\_testSet(X, W, b):
     classes = np.shape(W)\[1\]
     m = np.shape(X)\[1\]
@@ -213,6 +220,7 @@ def predict\_testSet(X, W, b):
 
     #print all\_A
     return np.argmax(all\_A, axis=0)
+```
 
 Results:*   Predicted Values: \[1 3 4 5 0 6\]
 *   Real values: \[1, 3, 4, 5, 0, 6\]
@@ -221,8 +229,8 @@ The predicted values are similar to the real values of the test set.
 It looks Great.  
   
 Now, we want it to count from a to b. If we give it a '2' for example, it will output \[2, 3, 4, 5, 6, 7, 8, 9\].  
-  
 
+```python
 def count(a, c, W, b, dim):
     numbers = \[\]
     i = predict(a, W, b, dim)
@@ -237,7 +245,7 @@ def count(a, c, W, b, dim):
             i = predict(i, W, b, dim)
             numbers.append(i)
     return numbers
-
+```
   
 Now, let's visualize the learning curves to plot the costs through the iterations by using different learning rates.  
   
