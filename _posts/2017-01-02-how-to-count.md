@@ -54,7 +54,7 @@ def transform\_to\_binary(X, y, dim, classes):
 
 Second, we define our activation function. In our case, we will use a sigmoid or logistic function. That will map any real number to a (0, 1) interval, to give us a probability of our output.
 
-![Responsive image](images_2017-01-02/sigmoid_function.png)
+![Responsive image](/assets/img/posts/images_2017-01-02/sigmoid_function.png)
 
   
 
@@ -242,17 +242,10 @@ def count(a, c, W, b, dim):
 Now, let's visualize the learning curves to plot the costs through the iterations by using different learning rates.  
   
 
-![Responsive image](images_2017-01-02/Learning_curve (learning_rate = 0.1).png)
+![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.1).png)
 
-![Responsive image](images_2017-01-02/Learning_curve (learning_rate = 0.01).png)
+![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.01).png)
 
-![Responsive image](images_2017-01-02/Learning_curve (learning_rate = 0.001).png)
+![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.001).png)
 
 And that’s it! I hope I gave you a sense of how logistic regression actually works. You can find the whole code source in ([here](https://github.com/faresbs/Machine-learning-Applications/blob/master/Logistic%20regression/Logistic_regression_digit_count.py)).
-
-## Connect with Me
-
-Feel free to reach out or follow my work through the links below:
-- [Email](mailto:farris.benslimane@gmail.com)
-- [LinkedIn](https://www.linkedin.com/in/fares-ben-slimane/)
-- [GitHub](https://github.com/faresbs)
