@@ -38,7 +38,7 @@ round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
-title-img: /path/to/image
+title-img: "assets/img/cover.jpg"
 
 
 #####################################
@@ -50,7 +50,7 @@ title-img: /path/to/image
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
   email: "farris.benslimane@gmail.com"
-  rss: true  # remove this line if you don't want to show an RSS link at the bottom
+  rss: false  # remove this line if you don't want to show an RSS link at the bottom
   github: faresbs
 #  medium: yourname
 #  reddit: yourname
@@ -94,7 +94,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+url-pretty: "https://faresbs.github.io"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
