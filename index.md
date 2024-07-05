@@ -11,11 +11,7 @@ title: Welcome!
 
 <i>The picture is from my last boat trip around the Komodo islands in Indonesia. It is a magical place with amazing views, beaches, people, and also mystical dragons. I strongly recommend everyone to visit it. </i>
 
-# Hello and welcome! 
-
 ---
-
-My name is **Fares Ben Slimane**, and I am a Computer Vision and AI enthusiast. I graduated with a Master's degree in Computer Science, specializing in Artificial Intelligence, from the University of Quebec at Montreal (UQAM). I currently work as a Machine Learning Software Developer, creating innovative AI solutions to solve real-world problems.
 
 ## About Me
 
@@ -26,7 +22,9 @@ My name is **Fares Ben Slimane**, and I am a Computer Vision and AI enthusiast. 
 ---
 ---
 
-I have a strong background in AI research and development, with expertise in machine learning, speech recognition, and computer vision. My passion lies in leveraging technology to make a positive impact on the world. Here are a few highlights from my professional journey:
+My name is **Fares Ben Slimane**, and I am a Computer Vision and AI enthusiast. I graduated with a Master's degree in Computer Science, specializing in Artificial Intelligence, from the University of Quebec at Montreal (UQAM). I currently work as a Machine Learning Software Developer and a part-time tutor. I have a strong background in AI research and development, with expertise in machine learning, speech recognition, and computer vision. My passion lies in leveraging technology to make a positive impact on the world. 
+
+Here are a few highlights from my professional journey:
 
 - **AI Mentor at OpenClassroom**: I instruct advanced AI courses to professionals, covering topics such as data analysis, classical ML, NLP, CV, and AI project management.
 - **Machine Learning Developer at Fluent.ai**: I contributed to developing and integrating AI models, reducing model sizes and improving performance in multi-wakeword scenarios.
