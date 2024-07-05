@@ -82,7 +82,12 @@ def initialize(dim, classes):
 We define our cost function that compares the results of the hypothesis with inputs from X's and the actual output Y's. Our cost function is called cross entropy and looks like this:
 
   
-$Cost := - \\frac{1}{m} \\sum\_{i} ({y\_i \\log(\\hat{y\_i}) + (1-y\_i) \\log (1-\\hat{y\_i})})$  
+<div align="center">
+$$
+\text{Cost} := - \frac{1}{m} \sum_{i} (y_i \log(\hat{y_i}) + (1-y_i) \log (1-\hat{y_i}))
+$$
+</div>
+
 
 ```python
 def cost\_function(A, y):
