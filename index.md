@@ -6,8 +6,6 @@ title: Welcome!
 <div style="position: relative; margin: 0; padding: 0;">
     <img src="assets/img/cover.jpg" alt="Cover Photo" style="width: 100%; height: auto;" />
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
-        <h1>Your Title Here</h1>
-        <p>Your Subtitle Here</p>
     </div>
 </div>
 <i>The picture is from my last boat trip around the Komodo islands in Indonesia. It is a magical place with amazing views, beaches, people, and also mystical dragons. I strongly recommend everyone to visit it. </i>
