@@ -30,15 +30,7 @@ Here are a few highlights from my professional journey:
 - **Machine Learning Developer at Fluent.ai**: I contributed to developing and integrating AI models, reducing model sizes and improving performance in multi-wakeword scenarios.
 - **R&D Machine Learning Developer at Hummingbirds AI**: I implemented state-of-the-art computer vision algorithms and led research initiatives to address real-world challenges.
 
-## Latest Posts
-
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
-    </li>
-  {% endfor %}
-</ul>
+[Download my full CV](downlaods/cv.pdf)
 
 ## Technical Skills
 
@@ -80,14 +72,7 @@ A predictive model that tracks students' academic performance and forecasts futu
 ## Publications and Talks
 
 - **Conference Paper**: Context Matters: Self-Attention for Sign Language Recognition (ICPR 2020)
+[Arxiv Link](https://arxiv.org/abs/2101.04632)
 
-## Connect with Me
 
-Feel free to reach out or follow my work through the links below:
-- [Email](mailto:farris.benslimane@gmail.com)
-- [LinkedIn](https://www.linkedin.com/in/fares-ben-slimane/)
-- [GitHub](https://github.com/faresbs)
 
-[Download my full CV](downlaods/cv.pdf)
-
-Thank you for visiting my blog! I hope you find my projects and insights valuable.
