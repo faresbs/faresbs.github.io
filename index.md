@@ -3,31 +3,6 @@ layout: home
 title: Welcome!
 ---
 
-<style>
-.cover {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Ensures full viewport height */
-    overflow: hidden; /* Hides any overflow content */
-}
-
-.cover img {
-    width: 100%; /* Ensures the image spans the entire width */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: cover; /* Covers entire container */
-}
-
-.cover-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    z-index: 1; /* Ensures content stays above the background image */
-}
-</style>
-
 <div class="cover">
     <img src="assets/img/cover.jpg" alt="Cover Photo">
     <div class="cover-content">
