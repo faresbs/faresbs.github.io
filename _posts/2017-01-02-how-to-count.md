@@ -1,9 +1,15 @@
 ---
 layout: post
 title:  "Teaching a model how to count with Logistic regression"
+subtitle: In this quick post, we will learn how to build a Logistic regression model from scratch that learns how to count digits. The idea is that the model will learn how to count from 0 to 9 in binary.
+cover-img: /assets/img/path.jpg
+thumbnail-img: /assets/img/thumb.png
+share-img: /assets/img/path.jpg
+tags: [books, test]
+author: Fares Ben Slimane
 date:   2017-01-02
-categories: Machine learning
 ---
+
 
 ##### Requirements :
 
@@ -16,12 +22,11 @@ categories: Machine learning
 
 In this quick post, we will learn how to build a Logistic regression model from scratch that learns how to count digits. The idea is that the model will learn how to count from 0 to 9 in binary; if you give it an input of 0100 (that's 4 in binary), it outputs a 0000010000 or a '5'; Since we have 10 possible classes (0 -> 9), our resulting output for one set of inputs may look like this \[0000000001\] or this \[1000000000\], if the output is 0.  
 
-![Responsive image](images_2017-01-02/logistic_regression_model.png)
+![Responsive image](/assets/img/posts/images_2017-01-02/logistic_regression_model.png)
 
   
 Ok, great now let's start coding.
 
-  
 
 First, we need a function that transforms decimal digits into binaries. For the inputs, a '1' will become a 0001 and for the outputs, a '1' will become a 0000000001. We use this function on train and test sets, to transform our data to binaries.
 
@@ -49,7 +54,7 @@ def transform\_to\_binary(X, y, dim, classes):
 
 Second, we define our activation function. In our case, we will use a sigmoid or logistic function. That will map any real number to a (0, 1) interval, to give us a probability of our output.
 
-![Responsive image](images_2017-01-02/sigmoid_function.png)
+![Responsive image](/assets/img/posts/images_2017-01-02/sigmoid_function.png)
 
   
 
@@ -237,17 +242,10 @@ def count(a, c, W, b, dim):
 Now, let's visualize the learning curves to plot the costs through the iterations by using different learning rates.  
   
 
-![Responsive image](images_2017-01-02/Learning_curve (learning_rate = 0.1).png)
+![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.1).png)
 
-![Responsive image](images_2017-01-02/Learning_curve (learning_rate = 0.01).png)
+![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.01).png)
 
-![Responsive image](images_2017-01-02/Learning_curve (learning_rate = 0.001).png)
+![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.001).png)
 
 And that’s it! I hope I gave you a sense of how logistic regression actually works. You can find the whole code source in ([here](https://github.com/faresbs/Machine-learning-Applications/blob/master/Logistic%20regression/Logistic_regression_digit_count.py)).
-
-## Connect with Me
-
-Feel free to reach out or follow my work through the links below:
-- [Email](mailto:farris.benslimane@gmail.com)
-- [LinkedIn](https://www.linkedin.com/in/fares-ben-slimane/)
-- [GitHub](https://github.com/faresbs)
