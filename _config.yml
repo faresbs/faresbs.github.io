@@ -10,7 +10,7 @@
 ############################
 
 # Name of website
-title: My personal blog
+title: Personal blog
 
 # Your name to show in the footer
 author: Fares Ben Slimane
@@ -21,8 +21,8 @@ author: Fares Ben Slimane
 
 navbar-links:
   About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
+  #Resources:
+  #  - Beautiful Jekyll: "https://beautifuljekyll.com"
   Author's home: "https://faresbs.github.io"
 
 ################
