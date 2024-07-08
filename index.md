@@ -2,7 +2,7 @@
 layout: home
 title: Welcome! 
 ---
-
+ 
 
 <div style="position: relative; margin: 0; padding: 0;">
     <img src="assets/img/cover.jpg" alt="Cover Photo" style="width: 100%; height: auto;" />
