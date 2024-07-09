@@ -25,7 +25,7 @@ Here are a few highlights from my professional journey:
 - **Machine Learning Developer at Fluent.ai**: I contributed to developing and integrating AI models, reducing model sizes and improving performance in multi-wakeword scenarios.
 - **R&D Machine Learning Developer at Hummingbirds AI**: I implemented state-of-the-art computer vision algorithms and led research initiatives to address real-world challenges.
 
-[Download my full CV](downlaods/cv.pdf)
+[Download my full CV](assets/downlaods/cv.pdf)
 
 # Technical Skills
 
