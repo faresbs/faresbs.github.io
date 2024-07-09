@@ -1,6 +1,7 @@
 ---
 layout: home
 title: Welcome! 
+cover-img: /assets/img/cover.jpg
 ---
  
 
