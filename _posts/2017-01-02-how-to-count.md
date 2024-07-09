@@ -22,10 +22,8 @@ date:   2017-01-02
 
 In this quick post, we will learn how to build a Logistic regression model from scratch that learns how to count digits. The idea is that the model will learn how to count from 0 to 9 in binary; if you give it an input of 0100 (that's 4 in binary), it outputs a 0000010000 or a '5'; Since we have 10 possible classes (0 -> 9), our resulting output for one set of inputs may look like this \[0000000001\] or this \[1000000000\], if the output is 0.  
 
-<div align="center">
 ![Responsive image](/assets/img/posts/images_2017-01-02/logistic_regression_model.png)
-</div>
-  
+
 Ok, great now let's start coding.
 
 
@@ -254,8 +252,7 @@ def count(a, c, W, b, dim):
 ```
   
 Now, let's visualize the learning curves to plot the costs through the iterations by using different learning rates.  
-  
-<div align="center">
+
 
 ![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.1).png)
 
@@ -263,6 +260,5 @@ Now, let's visualize the learning curves to plot the costs through the iteration
 
 ![Responsive image](/assets/img/posts/images_2017-01-02/Learning_curve(learning_rate=0.001).png)
 
-</div>
 
 And that’s it! I hope I gave you a sense of how logistic regression actually works. You can find the whole code source in ([here](https://github.com/faresbs/Machine-learning-Applications/blob/master/Logistic%20regression/Logistic_regression_digit_count.py)).
