@@ -351,10 +351,6 @@ The agent seems to follow the risky but optimal strategy of following the cliff 
 
 The main difference between the standard Q-learning algorithm and DQN (Deep Q Neural Networks) is that DQN uses a deep neural network to approximate the Q-values, while Q-learning relies on a Q-table to store the values.
 
-We’ll be using experience replay memory for training our DQN. It stores the transitions that the agent observes, allowing us to reuse this data later. By sampling from it randomly, the transitions that build up a batch are decorrelated. It has been shown that this greatly stabilizes and improves the DQN training procedure. 
-
-We are going to be using a simple NN to predict the probability distribution across our action space for a given state. 
-
 ```python
 class DQN(nn.Module):
 
@@ -372,5 +368,102 @@ class DQN(nn.Module):
         return self.layer3(x)
 ```
 
+We first calculates the expected future rewards (Q values) based on the next state. If there is no next state, the expected value is just the immediate reward. It then gets the estimated value of the current action from the policy network. The Huber loss or L1loss is computed to measure the difference between the expected and estimated Q values. Finally, the model's parameters are adjusted to minimize this loss, improving the model's future predictions and this is done using a small learning rate.
 
-You can find the entire Notebook here: 
+```python
+# Compute the expected Q values for the next time step
+if next_state is None:
+   expected_values = reward
+else:
+   next_state_values = policy_net(next_state).max(1)[0].detach()
+   expected_values = (next_state_values * GAMMA) + reward
+
+ # Get the estimated values from the policy network 
+estimated_values = policy_net(state).gather(1, torch.tensor([[action]], device=device))
+
+# Compute Huber loss
+criterion = nn.SmoothL1Loss()
+loss = criterion(estimated_values, expected_values)
+
+# Optimize the model
+optimizer.zero_grad()
+loss.backward()
+# In-place gradient clipping
+torch.nn.utils.clip_grad_value_(policy_net.parameters(), 100)
+optimizer.step()
+```
+
+You can find the entire Notebook here: https://github.com/faresbs/Machine-learning-Applications/blob/master/reinforcement_learning/hands-on-rl.ipynb
+
+## Homework 
+
+Let's see if you grasped all the details of this course. Try to implement and use the different RL algorithm on a different, more challenging env. Let's pick Cartpole from Gymnasium. 
+
+Link: https://gymnasium.farama.org/environments/classic_control/cart_pole/
+
+The agent has to decide between two actions - moving the cart (1) left or (2) right - so that the pole attached to it stays upright.
+
+As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state, and also returns a reward that indicates the consequences of the action.
+
+In this task, rewards are +1 for every incremental timestep and the environment terminates if the pole falls over too far or the cart moves more than 2.4 units away from center. This means better performing scenarios will run for longer duration, accumulating larger return.
+
+In the CartPole environment, the state space consists of four observations. These four observations represent the following physical properties of the cart-pole system:
+
+- Cart Position: The position of the cart on the track.
+- Cart Velocity: The velocity of the cart.
+- Pole Angle: The angle of the pole with respect to the vertical axis.
+- Pole Angular Velocity: The angular velocity of the pole.
+
+
+Here are the different observations and their ranges. 
+
+| Num | Observation           | Min                  | Max                |
+|-----|-----------------------|----------------------|--------------------|
+| 0   | Cart Position         | -4.8*                 | 4.8*                |
+| 1   | Cart Velocity         | -Inf                 | Inf                |
+| 2   | Pole Angle            | ~ -0.418 rad (-24°)** | ~ 0.418 rad (24°)** |
+| 3   | Pole Angular Velocity | -Inf                 | Inf                |
+
+From : https://magalimorin18.github.io/reinforcement_learning/td2/discrete.html
+
+The agent take these 4 inputs from the environment without any scaling and (A) store them in a Q-table or (B) pass them through a small fully-connected network in order to output 2 classes, one for each action (left or right). 
+
+### Discretization of the env
+
+Unlike the previous exmaple (Cliff Walking), in this environment (Cartpole), our observation space is represented by float values. Even though our DQN approach can deal with that. If we want to use a Q table, we need to discretize our environment by representing our observation space as a finite set of discrete values.
+
+```python
+
+# Discretize the env
+DISCRET_NBR = [1, 1, 10, 6] # Number of values per dimension of the state
+
+env_low = env.observation_space.low
+env_high = env.observation_space.high
+env_low[1], env_high[1] = -5, 5
+env_low[3], env_high[3] = -math.radians(50), math.radians(50)
+print(env_low)
+print(env_high)
+plt.plot(env_low)
+plt.plot(env_high)
+plt.title("Upper and Lower bounds")
+
+#Use this function to map continuous values to their corresponding discrete bins
+def convert_state_discrete(state):
+    bucket_indice = []
+    for state_idx in range(len(state)):
+        if state[state_idx] <= env_low[state_idx]:
+            bucket_index = 0
+        elif state[state_idx] >= env_high[state_idx]:
+            bucket_index = DISCRET_NBR[state_idx] - 1
+        else:
+            # Mapping the state bounds to the bucket array
+            bound_width = env_high[state_idx] - env_low[state_idx]
+            offset = (DISCRET_NBR[state_idx] - 1) * env_low[state_idx] / bound_width
+            scaling = (DISCRET_NBR[state_idx] - 1) / bound_width
+            bucket_index = int(round(scaling * state[state_idx] - offset))
+        bucket_indice.append(bucket_index)
+    return tuple(bucket_indice)
+```
+
+And that's a wrap! I hope you enjoyed it and you got to learn something from it! 
+Keep exploring, keep learning. Onward to the next subject!
