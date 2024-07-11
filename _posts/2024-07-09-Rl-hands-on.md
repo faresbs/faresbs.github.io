@@ -393,8 +393,6 @@ torch.nn.utils.clip_grad_value_(policy_net.parameters(), 100)
 optimizer.step()
 ```
 
-You can find the entire Notebook here: https://github.com/faresbs/Machine-learning-Applications/blob/master/reinforcement_learning/hands-on-rl.ipynb
-
 ## Homework 
 
 Let's see if you grasped all the details of this course. Try to implement and use the different RL algorithm on a different, more challenging env. Let's pick Cartpole from Gymnasium. 
@@ -467,3 +465,6 @@ def convert_state_discrete(state):
 
 And that's a wrap! I hope you enjoyed it and you got to learn something from it! 
 Keep exploring, keep learning. Onward to the next subject!
+
+
+You can find the entire Notebook here: https://github.com/faresbs/Machine-learning-Applications/blob/master/reinforcement_learning/hands-on-rl.ipynb
