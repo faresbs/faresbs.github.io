@@ -2,9 +2,9 @@
 layout: post
 title: Hand on RL algorithms
 subtitle: 
-cover-img: assets/img/posts/2024-07-9/cover.JPG
+cover-img: assets/img/posts/2024-07-11/cover.JPG
 thumbnail-img: 
-share-img: assets/img/posts/2024-07-9/cover.JPG
+share-img: assets/img/posts/2024-07-11/cover.JPG
 tags: [AI, ML, Reinforcement Learning]
 author: Fares Ben Slimane
 date:   2024-07-11
