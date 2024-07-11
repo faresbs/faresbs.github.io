@@ -2,15 +2,15 @@
 layout: post
 title: Hand on RL algorithms
 subtitle: 
-cover-img: /assets/img/posts/2024-07-11/cover.jpg
+cover-img: assets/img/posts/2024-07-9/cover.JPG
 thumbnail-img: 
-share-img: /assets/img/posts/2024-07-11/cover.jpg
+share-img: assets/img/posts/2024-07-9/cover.JPG
 tags: [AI, ML, Reinforcement Learning]
 author: Fares Ben Slimane
 date:   2024-07-11
 ---
 
-This notebook is a tutorial to explain and showcase how to use RL algorithms like Q learning (model-free version and the DQN version), Sarsa, MC and how they differ, using Pytorch and OpenAI Gymnasium library. This notebook will give you a straightford overview of how RL algorithms work with real examples. I deliberately made the code redundant to showcase the differences and similarities of the different algorithms.
+This notebook is a tutorial to explain and showcase how to use RL algorithms like Q learning (model-free version and the DQN version), Sarsa, MC and how they differ, using Pytorch and OpenAI Gymnasium library. This notebook will give you a straightforward overview of how RL algorithms work with real examples. I deliberately made the code redundant to showcase the differences and similarities of the different algorithms.
 
 ##### Requirements :
 
@@ -38,7 +38,7 @@ This notebook is a tutorial to explain and showcase how to use RL algorithms lik
 
 <center>
 
-![Cliff Walking on action]( /assets/img/posts/2024-07-11/cover.jpg)
+![Cliff Walking on action]( /assets/img/posts/2024-07-11/clifwalking.gif)
 
 </center>
 
