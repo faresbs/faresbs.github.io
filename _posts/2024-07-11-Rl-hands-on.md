@@ -35,8 +35,11 @@ This notebook is a tutorial to explain and showcase how to use RL algorithms lik
 
 
 ## Cliff walking:  Task Definition 
+
 <center>
+   
 ![Cliff Walking on action](/assets/img/posts/2024-07-11/clifwalking.gif)
+
 </center>
    
 The agent has to decide between 4 actions - Right, Left, Bottom or Up.
