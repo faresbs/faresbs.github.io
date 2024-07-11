@@ -282,6 +282,13 @@ else:
    #Exploit
    next_action = np.argmax(Q_table[next_state])
 ```
+### Comparing the training curve of the three RL algorithms
+
+<center>
+
+![rl camparison](/assets/img/posts/2024-07-11/algo_comp.png)
+
+</center>
 
 ### Monte Carlo Simulation
 
@@ -312,12 +319,6 @@ def eval_q(env, Q, n_sim=5):
 reward = np.mean(eval_q(env, Q_table, n_sim=10000))
 print("Average Reward across all simulations is: "+ str(reward))
 ```
-
-<center>
-
-![rl camparison](/assets/img/posts/2024-07-11/algo_comp.png)
-
-</center>
 
 The average reawrd is -13 (which is the optimal result) across the 10,000 simulation, proves that our model gives the optimal solution in every case. 
 
