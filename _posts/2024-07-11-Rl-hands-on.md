@@ -36,6 +36,12 @@ This notebook is a tutorial to explain and showcase how to use RL algorithms lik
 
 ## Cliff walking:  Task Definition 
 
+<center>
+
+![Cliff Walking on action](/assets/img/posts/2024-07-11/clifwalking.gif)
+
+</center>
+
 The agent has to decide between 4 actions - Right, Left, Bottom or Up.
 
 As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state and also returns a reward that indicates the consequences of the action.
@@ -163,10 +169,6 @@ print("Training finished.\n")
 
 env.close()
 ```
-
-### Display the agent behaviour during training
-
-The agent seems to try different paths and directions, but end up getting to the end point after many trials. 
 
 ## Maximization Bias problem
 
@@ -312,6 +314,12 @@ The average reawrd is -13 (which is the optimal result) across the 10,000 simula
 ### Display the results
 
 The agent seems to follow the risky but optimal strategy of following the cliff to get to the target, which result in a total reward of -13. 
+
+<center>
+
+![Cliff Walking on action](/assets/img/posts/2024-07-11/final_clifwalking.gif)
+
+</center>
 
 # Deep Q learning
 
