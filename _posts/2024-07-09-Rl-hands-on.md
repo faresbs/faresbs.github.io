@@ -136,7 +136,6 @@ Initilize Q(s, a), for s reprenting all states and a representing all possible a
 ### Q-learning python Code
 
 ```python
-# Q-Learning algorithm
 
 alpha = 0.1  # Learning rate (make sure to choose a high lr)
 gamma = 0.98  # Discount factor
@@ -325,6 +324,25 @@ The average reawrd is -13 (which is the optimal result) across the 10,000 simula
 ### Display the results
 
 The agent seems to follow the risky but optimal strategy of following the cliff to get to the target, which result in a total reward of -13. 
+
+## Maximization Bias problem
+
+Because of the max operation in the update equation, Q-learning tends to sometimes overestimate q-values, leading to suboptimal policies by following a biased estimation. You can think of it as the agent always starting by turning right first, after many episodes it can start to learn to overcome this biased approach and it starts to convert to a different and better strategy.
+This overestimation problem is known as the <b>maximization bias</b>. 
+
+
+### Solution: Double Q-learning
+
+Double Q-learning introduces a subtle improvement to mitigate the maximization bias.
+Instead of relying on a single q-value estimate, it maintains two separate q-value functions: Q1 and Q2.
+During updates, one function (e.g., Q1) selects the best action, while the other (Q2) evaluates that action.
+The update equation alternates between Q1 and Q2, reducing the overestimation effect.
+The final policy is derived from the average or sum of Q1 and Q2.
+
+### Advantages
+
+Double Q-learning provides faster transient performance compared to standard Q-learning.
+It reduces the maximization bias, leading to better policies over a shorter period of training time.
 
 
 
