@@ -76,7 +76,7 @@ At each step:
 You’re in a specific state (S) (a maze cell).
 You choose an action (A) (e.g., move left, right, up, or down).
 Based on that action, you receive a reward (cheese or poison).
-You end up in the next state (S1) (a neighboring cell).
+You end up in the next state (S1) (a neighbouring cell).
 You then decide on another action (A1) for the next step.
 
 ### Algorithm 
@@ -103,7 +103,7 @@ Initialize Q(s, a), for s representing all states and a representing all possibl
    - **Repeat until the current state is terminal** (i.e., $S_t = S_{\text{end}}$).
 
 
-### Q-learning python Code
+### Q-learning Python Code
 
 ```python
 
