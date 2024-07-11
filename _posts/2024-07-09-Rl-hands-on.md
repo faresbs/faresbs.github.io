@@ -37,10 +37,10 @@ date:   2024-07-09
 
 The agent has to decide between 4 actions - Right, Left, Bottom or Up.
 
-As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state, and also returns a reward that indicates the consequences of the action.
+As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state and also returns a reward that indicates the consequences of the action.
 
-In this task, Each time step incurs -1 reward, unless the player stepped into the cliff, which incurs -100 reward. Getting to the target gives you a +100 reward. Obviously, the goal is to get to the target point with more rewards. 
-The space is represented by a 12 x 4 (48 observations) with 3 x 12 + 1 possible states. The agent observes the position from the environment and choose an action from 4 possible actions. 
+In this task, Each time step incurs -1 reward, unless the player steps into the cliff, which incurs a -100 reward. Getting to the target gives you a +100 reward. Obviously, the goal is to get to the target point with more rewards. 
+The space is represented by a 12 x 4 (48 observations) with 3 x 12 + 1 possible states. The agent observes the position from the environment and chooses an action from 4 possible actions. 
 
 You can learn more about it here:
 https://gymnasium.farama.org/environments/toy_text/cliff_walking/
@@ -53,42 +53,9 @@ In this Notebook, we are going to experiment with multiple RL algorithms:
 
 3) Sarsa
 
-
-## TD (Temporal difference learning)
-
-To Explain Q-learning, we need first to clarify what is Temporal Difference (TD), undoubtedly the most central idea in Reinforcement learning. TD is a combination of both monte carlo and dynamic programming (You can find more about them here). Like Monte Carlo, TD learns directly from <i> experience </i> without needing to model the environment's dynamics. Like DP, TD use <i> bootstrapping </i> to estimate the values of subsequent states to determine the value of the current state. Essentially, it involves leveraging "estimated" information from future states to improve our understanding of the current state without waiting for the "actual" outcome. 
-
-Both TD and Monte Carlo use experience following some policy $\pi$ to update their estimate for value $V(S_t)$. Whereas, MC methods need to wait until the end of the episode to determine the total return (or Reward $R$) to predict $V(S_t)$, TD on the other hand just wait until the next time step $t+1$ to form a <i>target</i> by updating $R_{t+1}$ and estimating $V(S_{t+1})$. We call this TD(0) or one step TD where the target is based solely on the next step $t+1$ outcome. This is a special case of TD($\gamma$) with $\gamma$ time steps. In a nutshell, Monte Carlo approach require us to wait for the final outcome to estimate the current state because we don't know yet the "true return" of that episode. On the other hand, TD waits for the $\gamma$ next steps or simply the next step $t_1$.
-
-$$ V(S_t) \leftarrow V(S_t) + \alpha \left[ (R_{t+1} + \gamma V(S_{t+1}) ) - V(S_t) \right] $$
-
-
-$V(S_t)$ represents the value function for current state $S_t$ that estimate . 
-
-$\alpha$ is the learning rate (a positive constant).
-
-$R_{t+1}$ is the immediate reward received after transitioning from state $S_t$ to state $S_{t+1}$
-
-$\gamma$ is the discount factor (a value between 0 and 1) that accounts for future rewards.
-
-DP methods try to solve problems by breaking them down into smaller subproblems and solving those subproblems first.
-Like DP, TD use bootstrapping to update estimates based on other estimates—to iteratively improve our understanding of the overall problem. The future reward $v_\pi(S_t)$ from the current state $S_t$ and following the policy $\pi$ is the current reward plus the next step future reward $v_\pi(S_{t+1})$. Note that here the current reward is actually $R_{t+1}$ and not $R_t$, because it is the observed reward from transitioning from $S_t$ to $S_{t+1}$ using a policy. 
-
-$$ v_\pi(S_t) = \mathop{\mathbb{E}} [G_t | S_t] = \mathop{\mathbb{E}} [R_{t+1} + \gamma v_\pi(S_{t+1}) | S_t] $$
-
-The DP target is an estimate not because of the expected values $V(S_t)$ (provided by a model of the environment), but because the "actual or optimal" $v_\pi(S_{t+1})$ value is not known yet and therefore we rely on the estimate $V(S_{t+1})$.
-
-$$ (R_{t+1} + \gamma V(S_{t+1}) ) - V(S_t) $$
-
-We refer to this term as the TD error that we are going to be using to update $V(S_t)$ of the current state by multplying it by a small step $\alpha$ value. This Equation can be understood by saying that we are getting the TD error between the current prediction or estimation $V(S_t)$ and the better estimatation  $R_{t+1} + \gamma V(S_{t+1})$, which depends on the next reward and the next estimation state. We say that it is a "better estimate" because it is relying on the observed reward $R_{t+1}$ when we transition to the next time step.
-
-### Why TD is better?
-
-TD methods have an advantage over DP methods because they do not require a model of the environment (of all its actual rewards and probability distributions). Also, TD is better than MC, because they can be implemented in an online, incremental fasion, as it can learn one guess from the next without waiting for an actual outcome (only wait one time step). MC, on the other hand, must wait until the end of the episode, because only then that the return is known. Some application have very long episodes which can make training slower. This can be easily observed by comparing the code of TD methods like Q_learning / SARSA and that of Monte Carlo down below.
-
 ## Q-learning (Tabular method): Off-policy TD Algorithm
 
-Q-learning is a model-free, value (Reward) based  and off-policy RL algorithm. The “Q” stands for <i>quality</i>, representing how valuable an action is in maximizing future rewards for a given state. It aims to maximize the value function Q, which estimates the expected cumulative reward. 
+Q-learning is a model-free, value (Reward) based and off-policy RL algorithm. The “Q” stands for <i>quality</i>, representing how valuable an action is in maximizing future rewards for a given state. It aims to maximize the value function Q, which estimates the expected cumulative reward. 
 
 Iteratively, the agent adjusts its strategy over time to make optimal decisions in various situations. The algorithm uses a Q-Table to find the best action for each state, maximizing expected rewards.
 
