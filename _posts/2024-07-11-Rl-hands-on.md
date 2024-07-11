@@ -189,7 +189,11 @@ The final policy is derived from the average or sum of Q1 and Q2.
 Double Q-learning provides faster transient performance compared to standard Q-learning.
 It reduces the maximization bias, leading to better policies over a shorter period of training time.
 
+<center>
 
+![Q-learning camparison](/assets/img/posts/2024-07-11/q_learning_vs_double.png)
+
+</center>
 
 ### Monte Carlo python Code
 
@@ -309,6 +313,12 @@ reward = np.mean(eval_q(env, Q_table, n_sim=10000))
 print("Average Reward across all simulations is: "+ str(reward))
 ```
 
+<center>
+
+![rl camparison](/assets/img/posts/2024-07-11/algo_comp.png)
+
+</center>
+
 The average reawrd is -13 (which is the optimal result) across the 10,000 simulation, proves that our model gives the optimal solution in every case. 
 
 ### Display the results
@@ -317,7 +327,7 @@ The agent seems to follow the risky but optimal strategy of following the cliff 
 
 <center>
 
-![Cliff Walking on action](/assets/img/posts/2024-07-11/final_clifwalking.gif)
+![Cliff Walking on action](/assets/img/posts/2024-07-11/final_cliffwalking.gif)
 
 </center>
 
