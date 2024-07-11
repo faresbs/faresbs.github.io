@@ -36,7 +36,7 @@ This notebook is a tutorial to explain and showcase how to use RL algorithms lik
 
 ## Cliff walking:  Task Definition 
 
-![Cliff Walking on action]( /assets/img/posts/2024-07-11/clifwalking.gif)
+![Cliff Walking on action](assets/img/posts/2024-07-11/clifwalking.gif)
 
 The agent has to decide between 4 actions - Right, Left, Bottom or Up.
 
@@ -82,7 +82,7 @@ You then decide on another action (A1) for the next step.
 ### Algorithm 
 
 Parameters: step size $\alpha = (0, 1]$, small greedy $\epsilon > 0$
-Initilize Q(s, a), for s reprenting all states and a representing all possible actions, arbitrarily except that Q(terminal, ) = max reward value.
+Initialize Q(s, a), for s representing all states and a representing all possible actions, arbitrarily except that Q(terminal, ) = max reward value.
 
 1. **Initialize** Q-values for all state-action pairs (Q-table).
 2. **Loop over episodes**:
@@ -129,7 +129,7 @@ for episode in range(0, episodes):
     #for step in range(max_steps):
     for t in count():
 
-        # Epsilon-greedy action selection for initial state
+        # Epsilon-greedy action selection for an initial state
         # Note: make sure to do this exploit/explore inside the time step loop to make sure we are doing this on every step
         if np.random.uniform(0, 1) < epsilon:
             action = np.random.randint(0, n_actions)
@@ -168,7 +168,7 @@ env.close()
 
 ## Maximization Bias problem
 
-Because of the max operation in the update equation, Q-learning tends to sometimes overestimate q-values, leading to suboptimal policies by following a biased estimation. You can think of it as the agent always starting by turning right first, after many episodes it can start to learn to overcome this biased approach and it starts to convert to a different and better strategy.
+Because of the max operation in the update equation, Q-learning tends to sometimes overestimate q-values, leading to suboptimal policies by following a biased estimation. You can think of it as the agent always starting by turning right first, after many episodes, it can start to learn to overcome this biased approach and it starts to convert to a different and better strategy.
 This overestimation problem is known as the <b>maximization bias</b>. 
 
 
@@ -191,9 +191,9 @@ It reduces the maximization bias, leading to better policies over a shorter peri
 
 </center>
 
-### Monte Carlo python Code
+### Monte Carlo Python Code
 
-Unlike Q-learning, through Monte Carlo approach we have to update update the Q-table for the full episode trajectory at end of episode.
+Unlike Q-learning, through the Monte Carlo approach we have to update the Q-table for the full episode trajectory at end of the episode.
 
 ```python
     # Calculate returns and update Q-table
@@ -282,7 +282,7 @@ else:
 
 <center>
 
-![rl camparison](/assets/img/posts/2024-07-11/algo_comp.png)
+![rl camparison](assets/img/posts/2024-07-11/algo_comp.png)
 
 </center>
 
@@ -324,7 +324,7 @@ The agent seems to follow the risky but optimal strategy of following the cliff 
 
 <center>
 
-![Cliff Walking on action](/assets/img/posts/2024-07-11/final_cliffwalking.gif)
+![Cliff Walking on action](assets/img/posts/2024-07-11/final_cliffwalking.gif)
 
 </center>
 
