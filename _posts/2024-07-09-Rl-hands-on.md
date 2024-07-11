@@ -200,6 +200,26 @@ env.close()
 
 The agent seems to try different paths and directions, but end up getting to the end point after many trials. 
 
+## Maximization Bias problem
+
+Because of the max operation in the update equation, Q-learning tends to sometimes overestimate q-values, leading to suboptimal policies by following a biased estimation. You can think of it as the agent always starting by turning right first, after many episodes it can start to learn to overcome this biased approach and it starts to convert to a different and better strategy.
+This overestimation problem is known as the <b>maximization bias</b>. 
+
+
+### Solution: Double Q-learning
+
+Double Q-learning introduces a subtle improvement to mitigate the maximization bias.
+Instead of relying on a single q-value estimate, it maintains two separate q-value functions: Q1 and Q2.
+During updates, one function (e.g., Q1) selects the best action, while the other (Q2) evaluates that action.
+The update equation alternates between Q1 and Q2, reducing the overestimation effect.
+The final policy is derived from the average or sum of Q1 and Q2.
+
+### Advantages
+
+Double Q-learning provides faster transient performance compared to standard Q-learning.
+It reduces the maximization bias, leading to better policies over a shorter period of training time.
+
+
 
 ### Monte Carlo python Code
 
@@ -325,25 +345,32 @@ The average reawrd is -13 (which is the optimal result) across the 10,000 simula
 
 The agent seems to follow the risky but optimal strategy of following the cliff to get to the target, which result in a total reward of -13. 
 
-## Maximization Bias problem
+# Deep Q learning
 
-Because of the max operation in the update equation, Q-learning tends to sometimes overestimate q-values, leading to suboptimal policies by following a biased estimation. You can think of it as the agent always starting by turning right first, after many episodes it can start to learn to overcome this biased approach and it starts to convert to a different and better strategy.
-This overestimation problem is known as the <b>maximization bias</b>. 
+## Deep Q Network (DQN)
 
+The main difference between the standard Q-learning algorithm and DQN (Deep Q Neural Networks) is that DQN uses a deep neural network to approximate the Q-values, while Q-learning relies on a Q-table to store the values.
 
-### Solution: Double Q-learning
+We’ll be using experience replay memory for training our DQN. It stores the transitions that the agent observes, allowing us to reuse this data later. By sampling from it randomly, the transitions that build up a batch are decorrelated. It has been shown that this greatly stabilizes and improves the DQN training procedure. 
 
-Double Q-learning introduces a subtle improvement to mitigate the maximization bias.
-Instead of relying on a single q-value estimate, it maintains two separate q-value functions: Q1 and Q2.
-During updates, one function (e.g., Q1) selects the best action, while the other (Q2) evaluates that action.
-The update equation alternates between Q1 and Q2, reducing the overestimation effect.
-The final policy is derived from the average or sum of Q1 and Q2.
+We are going to be using a simple NN to predict the probability distribution across our action space for a given state. 
 
-### Advantages
+```python
+class DQN(nn.Module):
 
-Double Q-learning provides faster transient performance compared to standard Q-learning.
-It reduces the maximization bias, leading to better policies over a shorter period of training time.
+    def __init__(self, n_observations, n_actions):
+        super(DQN, self).__init__()
+        self.layer1 = nn.Linear(n_observations, 128)
+        self.layer2 = nn.Linear(128, 128)
+        self.layer3 = nn.Linear(128, n_actions)
 
+    # Called with either one element to determine next action, or a batch
+    # during optimization. Returns tensor([[left0exp,right0exp]...]).
+    def forward(self, x):
+        x = F.relu(self.layer1(x))
+        x = F.relu(self.layer2(x))
+        return self.layer3(x)
+```
 
 
 You can find the entire Notebook here: 
