@@ -286,13 +286,13 @@ else:
 
 <center>
 
-![rl camparison](assets/img/posts/2024-07-11/algo_comp.png)
+![rl camparison](/assets/img/posts/2024-07-11/algo_comp.png)
 
 </center>
 
 ### Monte Carlo Simulation
 
-Instead of using fixed input values to test our models, Monte Carlo Simulation uses probability distributions for variables with inherent uncertainty. The simulation runs thousands of times, recalculating results each time. This yields a range of possible outcomes with associated probabilities. Then we can measure the rate of success or failure across all thousands of simulation, to have a better confidence about the state of our model. 
+Instead of using fixed input values to test our models, Monte Carlo Simulation uses probability distributions for variables with inherent uncertainty. The simulation runs thousands of times, recalculating results each time. This yields a range of possible outcomes with associated probabilities. Then we can measure the rate of success or failure across all thousands of simulations, to have a better confidence about the state of our model. 
 
 ```python
 
@@ -320,7 +320,7 @@ reward = np.mean(eval_q(env, Q_table, n_sim=10000))
 print("Average Reward across all simulations is: "+ str(reward))
 ```
 
-The average reawrd is -13 (which is the optimal result) across the 10,000 simulation, proves that our model gives the optimal solution in every case. 
+The average reward is -13 (which is the optimal result) across the 10,000 simulations, proves that our model gives the optimal solution in every case. 
 
 ### Display the results
 
@@ -328,7 +328,7 @@ The agent seems to follow the risky but optimal strategy of following the cliff 
 
 <center>
 
-![Cliff Walking on action](assets/img/posts/2024-07-11/final_cliffwalking.gif)
+![Cliff Walking on action](/assets/img/posts/2024-07-11/final_cliffwalking.gif)
 
 </center>
 
