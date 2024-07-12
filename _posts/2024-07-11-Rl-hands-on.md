@@ -39,6 +39,7 @@ This notebook is a tutorial to explain and showcase how to use RL algorithms lik
 <center>
    
 ![Cliff Walking on action](/assets/img/posts/2024-07-11/clifwalking.gif)
+<img src="/assets/img/posts/2024-07-11/clifwalking.gif">
 
 </center>
    
