@@ -44,9 +44,9 @@ This notebook is a tutorial to explain and showcase how to use RL algorithms lik
    
 The agent has to decide between 4 actions: Right, Left, Bottom, or Up.
 
-As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state and also returns a reward that indicates the consequences of the action.
+As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state and returns a reward that indicates the consequences of the action.
 
-In this task, each time step incurs a -1 reward, unless the player steps into the cliff, which incurs a -100 reward. Getting to the target gives a +100 reward. Obviously, the goal is to get to the target point with more rewards.
+In this task, each time step incurs a -1 reward, unless the player steps into the cliff, which incurs a -100 reward. The goal is to get to the target point with more rewards.
 The space is represented by a 12 x 4 grid (48 observations) with 3 x 12 + 1 possible states. The agent observes the position from the environment and chooses an action from 4 possible actions.
 
 You can learn more about it here:
