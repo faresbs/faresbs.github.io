@@ -2,15 +2,15 @@
 layout: post
 title: Hand on RL algorithms
 subtitle: 
-cover-img: /assets/img/posts/2024-07-11/cover.jpg
+cover-img: assets/img/posts/2024-07-11/cover.JPG
 thumbnail-img: 
-share-img: /assets/img/posts/2024-07-11/cover.jpg
+share-img: assets/img/posts/2024-07-11/cover.JPG
 tags: [AI, ML, Reinforcement Learning]
 author: Fares Ben Slimane
 date:   2024-07-11
 ---
 
-This notebook is a tutorial to explain and showcase how to use RL algorithms like Q learning (model-free version and the DQN version), Sarsa, MC and how they differ, using Pytorch and OpenAI Gymnasium library. This notebook will give you a straightford overview of how RL algorithms work with real examples. I deliberately made the code redundant to showcase the differences and similarities of the different algorithms.
+This notebook is a tutorial to explain and showcase how to use RL algorithms like Q-learning (model-free version and the DQN version), Sarsa, MC, and how they differ, using PyTorch and the OpenAI Gymnasium library. This notebook will give you a straightforward overview of how RL algorithms work with real examples. I deliberately made the code redundant to showcase the differences and similarities of the different algorithms.
 
 ##### Requirements :
 
@@ -36,19 +36,25 @@ This notebook is a tutorial to explain and showcase how to use RL algorithms lik
 
 ## Cliff walking:  Task Definition 
 
-The agent has to decide between 4 actions - Right, Left, Bottom or Up.
+<center>
+   
+<img src="/assets/img/posts/2024-07-11/clifwalking.gif">
 
-As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state and also returns a reward that indicates the consequences of the action.
+</center>
+   
+The agent has to decide between 4 actions: Right, Left, Bottom, or Up.
 
-In this task, Each time step incurs -1 reward, unless the player steps into the cliff, which incurs a -100 reward. Getting to the target gives you a +100 reward. Obviously, the goal is to get to the target point with more rewards. 
-The space is represented by a 12 x 4 (48 observations) with 3 x 12 + 1 possible states. The agent observes the position from the environment and chooses an action from 4 possible actions. 
+As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state and returns a reward that indicates the consequences of the action.
+
+In this task, each time step incurs a -1 reward, unless the player steps into the cliff, which incurs a -100 reward. The goal is to get to the target point with more rewards.
+The space is represented by a 12 x 4 grid (48 observations) with 3 x 12 + 1 possible states. The agent observes the position from the environment and chooses an action from 4 possible actions.
 
 You can learn more about it here:
 https://gymnasium.farama.org/environments/toy_text/cliff_walking/
 
-In this Notebook, we are going to experiment with multiple RL algorithms: 
+In this Notebook, we are going to experiment with multiple RL algorithms:
 
-1) Q learning: (A) model-free Q learning (classical one) which uses a Q table to predict the expected value, (B) Double Q learning to fix the problem of maximization bias, and (C) Deep Q Network, which uses a network to predict the expected value for each action, given the input state. The action with the highest expected value is then chosen. 
+1) Q-learning: (A) model-free Q-learning (the classical one) which uses a Q-table to predict the expected value, (B) Double Q-learning to fix the problem of maximization bias, and (C) Deep Q Network, which uses a network to predict the expected value for each action, given the input state. The action with the highest expected value is then chosen. 
 
 2) Monte Carlo
 
@@ -56,15 +62,15 @@ In this Notebook, we are going to experiment with multiple RL algorithms:
 
 ## Q-learning (Tabular method): Off-policy TD Algorithm
 
-Q-learning is a model-free, value (Reward) based and off-policy RL algorithm. The “Q” stands for <i>quality</i>, representing how valuable an action is in maximizing future rewards for a given state. It aims to maximize the value function Q, which estimates the expected cumulative reward. 
+Q-learning is a model-free, value (Reward) based, and off-policy RL algorithm. The “Q” stands for <i>quality</i>, representing how valuable an action is in maximizing future rewards for a given state. It aims to maximize the value function Q, which estimates the expected cumulative reward.
 
-Iteratively, the agent adjusts its strategy over time to make optimal decisions in various situations. The algorithm uses a Q-Table to find the best action for each state, maximizing expected rewards.
+Iteratively, the agent adjusts its strategy over time to make optimal decisions in various situations. The algorithm uses a Q-table to find the best action for each state, maximizing expected rewards.
 
-Q-Learning computes the difference between the current Q-value and the maximum Q-value of the time step over all possible actions: 
+Q-learning computes the difference between the current Q-value and the maximum Q-value of the time step over all possible actions:
 
 $$ Q(s_t, a_t) = Q(s_t, a_t) + \alpha \left( R_{t+1} + \gamma \max_a Q(s_{t+1}, a) - Q(s_t, a_t) \right) $$
 
-Q-learning updates the Q-value using the maximum Q-value over all possible actions for the next state, which helps it focus on the best possible action every step. 
+Q-learning updates the Q-value using the maximum Q-value over all possible actions for the next state, which helps it focus on the best possible action every step.
 
 It explores aggressively, even if the current policy is different, aiming to learn the optimal policy <i>independently of the agent’s actions</i>. And this is why it is an <b>off-policy algorithm</b>.
 
@@ -74,13 +80,13 @@ At each step:
 You’re in a specific state (S) (a maze cell).
 You choose an action (A) (e.g., move left, right, up, or down).
 Based on that action, you receive a reward (cheese or poison).
-You end up in the next state (S1) (a neighboring cell).
+You end up in the next state (S1) (a neighbouring cell).
 You then decide on another action (A1) for the next step.
 
 ### Algorithm 
 
 Parameters: step size $\alpha = (0, 1]$, small greedy $\epsilon > 0$
-Initilize Q(s, a), for s reprenting all states and a representing all possible actions, arbitrarily except that Q(terminal, ) = max reward value.
+Initialize Q(s, a), for s representing all states and a representing all possible actions, arbitrarily except that Q(terminal, ) = max reward value.
 
 1. **Initialize** Q-values for all state-action pairs (Q-table).
 2. **Loop over episodes**:
@@ -101,7 +107,7 @@ Initilize Q(s, a), for s reprenting all states and a representing all possible a
    - **Repeat until the current state is terminal** (i.e., $S_t = S_{\text{end}}$).
 
 
-### Q-learning python Code
+### Q-learning Python Code
 
 ```python
 
@@ -127,7 +133,7 @@ for episode in range(0, episodes):
     #for step in range(max_steps):
     for t in count():
 
-        # Epsilon-greedy action selection for initial state
+        # Epsilon-greedy action selection for an initial state
         # Note: make sure to do this exploit/explore inside the time step loop to make sure we are doing this on every step
         if np.random.uniform(0, 1) < epsilon:
             action = np.random.randint(0, n_actions)
@@ -164,20 +170,16 @@ print("Training finished.\n")
 env.close()
 ```
 
-### Display the agent behaviour during training
-
-The agent seems to try different paths and directions, but end up getting to the end point after many trials. 
-
 ## Maximization Bias problem
 
-Because of the max operation in the update equation, Q-learning tends to sometimes overestimate q-values, leading to suboptimal policies by following a biased estimation. You can think of it as the agent always starting by turning right first, after many episodes it can start to learn to overcome this biased approach and it starts to convert to a different and better strategy.
-This overestimation problem is known as the <b>maximization bias</b>. 
+Because of the max operation in the update equation, Q-learning sometimes tends to overestimate Q-values, leading to suboptimal policies by following a biased estimation. You can think of it as the agent always starting by turning right first. After many episodes, it can start to learn to overcome this biased approach and convert to a different and better strategy.
+This overestimation problem is known as the <b>maximization bias</b>.
 
 
 ### Solution: Double Q-learning
 
 Double Q-learning introduces a subtle improvement to mitigate the maximization bias.
-Instead of relying on a single q-value estimate, it maintains two separate q-value functions: Q1 and Q2.
+Instead of relying on a single Q-value estimate, it maintains two separate Q-value functions: Q1 and Q2.
 During updates, one function (e.g., Q1) selects the best action, while the other (Q2) evaluates that action.
 The update equation alternates between Q1 and Q2, reducing the overestimation effect.
 The final policy is derived from the average or sum of Q1 and Q2.
@@ -187,11 +189,18 @@ The final policy is derived from the average or sum of Q1 and Q2.
 Double Q-learning provides faster transient performance compared to standard Q-learning.
 It reduces the maximization bias, leading to better policies over a shorter period of training time.
 
+<center>
 
+![Q-learning camparison](/assets/img/posts/2024-07-11/q_learning_vs_double.png)
 
-### Monte Carlo python Code
+</center>
 
-Unlike Q-learning, through Monte Carlo approach we have to update update the Q-table for the full episode trajectory at end of episode.
+### Monte Carlo Python Code
+
+Unlike Q-learning, through the Monte Carlo method, you can observe every state in an episode and calculate the total reward received from the current state to the end.
+In the Monte Carlo method, we focus on episodes to calculate the value of each state.
+
+This approach is distinct from Q-learning, which updates Q-values at each time step. The Monte Carlo method relies on sampling episodes to derive the expected returns.
 
 ```python
     # Calculate returns and update Q-table
@@ -215,10 +224,11 @@ Unlike Q-learning, through Monte Carlo approach we have to update update the Q-t
     epsilon = max(min_epsilon, epsilon * epsilon_decay)
 
 ```
+Monte Carlo methods and Q-learning are two fundamental approaches for estimating the value of actions (Q-values) in reinforcement learning.
 
 ## Sarsa: On-Policy TD Algorithm
 
-Sarsa (stands for State-Action-Reward-State-Action) is another popular RL algorithm that is <b>on-policy</b>, which is used to learn a new policy for better decision-making. Unlike Q-learning, SARSA considers the action taken in the next state when updating Q-values. It updates its policy based on the actual actions taken by the agent, and thats why it an on-policy algorithm.
+Sarsa (stands for State-Action-Reward-State-Action) is another popular RL algorithm that is <b>on-policy</b>, which is used to learn a new policy for better decision-making. Unlike Q-learning, SARSA considers the action taken in the next state when updating Q-values. It updates its policy based on the actual actions taken by the agent, and that's why it is an on-policy algorithm.
 
 $$ Q(s_{t+1}, a_{t+1}) = Q(s_{t+1}, a) + \alpha \left( R_{t+1} + \gamma Q(s_{t+1}, a_{t+1}) - Q(s, a) \right) $$
 
@@ -230,7 +240,7 @@ The key difference between Q-learning and SARSA is that SARSA is an on-policy al
 In summary, SARSA is cautious, balancing exploration and exploitation, considering the current policy, while Q-learning boldly explores the best possible actions, for any given policy.
 
 As can be seen, in the code difference, Q-learning: Uses epsilon-greedy for action selection at each step and updates Q-values based on the maximum Q-value for the next state.
-SARSA: Uses epsilon-greedy for action selection at each step and updates Q-values based on the action actually taken in the next state.
+SARSA: Uses epsilon-greedy for action selection at each step and updates Q-values based on the action taken in the next state.
 
 ### How Does it Work?
 
@@ -246,7 +256,7 @@ The tuple (S, A, R, S1, A1) represents SARSA.
 ### Algorithm 
 
 Parameters: step size $\alpha = (0, 1]$, small greedy $\epsilon > 0$
-Initilize Q(s, a), for s reprenting all states and a representing all possible actions, arbitrarily except that Q(terminal, ) = max reward value.
+Initialize Q(s, a), for s representing all states and a representing all possible actions, arbitrarily except that Q(terminal, ) = max reward value.
 
 1. **Initialize** Q-values for all state-action pairs (Q-table).
 2. **Loop over episodes**:
@@ -276,10 +286,17 @@ else:
    #Exploit
    next_action = np.argmax(Q_table[next_state])
 ```
+### Comparing the training curve of the three RL algorithms
+
+<center>
+
+![rl camparison](/assets/img/posts/2024-07-11/algo_comp.png)
+
+</center>
 
 ### Monte Carlo Simulation
 
-Instead of using fixed input values to test our models, Monte Carlo Simulation uses probability distributions for variables with inherent uncertainty. The simulation runs thousands of times, recalculating results each time. This yields a range of possible outcomes with associated probabilities. Then we can measure the rate of success or failure across all thousands of simulation, to have a better confidence about the state of our model. 
+Instead of using fixed input values to test our models, Monte Carlo Simulation uses probability distributions for variables with inherent uncertainty. The simulation runs thousands of times, recalculating results each time. This yields a range of possible outcomes with associated probabilities. Then we can measure the rate of success or failure across all thousands of simulations, to have a better confidence about the state of our model. 
 
 ```python
 
@@ -307,11 +324,17 @@ reward = np.mean(eval_q(env, Q_table, n_sim=10000))
 print("Average Reward across all simulations is: "+ str(reward))
 ```
 
-The average reawrd is -13 (which is the optimal result) across the 10,000 simulation, proves that our model gives the optimal solution in every case. 
+The average reward is -13 (which is the optimal result) across the 10,000 simulations, proving that our model gives the optimal solution in every case. 
 
 ### Display the results
 
-The agent seems to follow the risky but optimal strategy of following the cliff to get to the target, which result in a total reward of -13. 
+The agent seems to follow the risky but optimal strategy of following the cliff to get to the target, which results in a total reward of -13. 
+
+<center>
+
+<img src="/assets/img/posts/2024-07-11/final_cliffwalking.gif">
+
+</center>
 
 # Deep Q learning
 
@@ -328,7 +351,7 @@ class DQN(nn.Module):
         self.layer2 = nn.Linear(128, 128)
         self.layer3 = nn.Linear(128, n_actions)
 
-    # Called with either one element to determine next action, or a batch
+    # Called with either one element to determine the next action or a batch
     # during optimization. Returns tensor([[left0exp,right0exp]...]).
     def forward(self, x):
         x = F.relu(self.layer1(x))
@@ -336,7 +359,7 @@ class DQN(nn.Module):
         return self.layer3(x)
 ```
 
-We first calculates the expected future rewards (Q values) based on the next state. If there is no next state, the expected value is just the immediate reward. It then gets the estimated value of the current action from the policy network. The Huber loss or L1loss is computed to measure the difference between the expected and estimated Q values. Finally, the model's parameters are adjusted to minimize this loss, improving the model's future predictions and this is done using a small learning rate.
+We first calculate the expected future rewards (Q values) based on the next state. If there is no next state, the expected value is just the immediate reward. It then gets the estimated value of the current action from the policy network. The Huber loss or L1loss is computed to measure the difference between the expected and estimated Q values. Finally, the model's parameters are adjusted to minimize this loss, improving the model's future predictions and this is done using a small learning rate.
 
 ```python
 # Compute the expected Q values for the next time step
@@ -361,23 +384,32 @@ torch.nn.utils.clip_grad_value_(policy_net.parameters(), 100)
 optimizer.step()
 ```
 
-## Homework 
+## Experimenting with other Games from the library
 
-Let's see if you grasped all the details of this course. Try to implement and use the different RL algorithm on a different, more challenging env. Let's pick Cartpole from Gymnasium. 
+Experimenting with various environments can provide valuable insights into how well these algorithms generalize and perform across different tasks. The following are some popular environments available in OpenAI Gym:
+
+CartPole: A classic control task where you balance a pole on a moving cart.
+MountainCar: A car must drive up a steep hill.
+Acrobot: A two-link pendulum must swing up and balance.
+LunarLander: A lunar lander must land safely on the moon.
+Atari Games: Various classic Atari games, such as Breakout, Pong, and Space Invaders, offer more complex and visually rich environments.
+Each environment presents unique challenges and requires different strategies, making them excellent testbeds for exploring and refining reinforcement learning algorithms.
+
+Let's pick Cartpole, for example. 
 
 Link: https://gymnasium.farama.org/environments/classic_control/cart_pole/
 
 The agent has to decide between two actions - moving the cart (1) left or (2) right - so that the pole attached to it stays upright.
 
-As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state, and also returns a reward that indicates the consequences of the action.
+As the agent observes the current state of the environment and chooses an action, the environment transitions to a new state. Also, it returns a reward that indicates the consequences of the action.
 
-In this task, rewards are +1 for every incremental timestep and the environment terminates if the pole falls over too far or the cart moves more than 2.4 units away from center. This means better performing scenarios will run for longer duration, accumulating larger return.
+In this task, rewards are +1 for every incremental timestep and the environment terminates if the pole falls over too far or the cart moves more than 2.4 units away from the center. This means better-performing scenarios will run for a longer duration, accumulating larger rewards.
 
 In the CartPole environment, the state space consists of four observations. These four observations represent the following physical properties of the cart-pole system:
 
 - Cart Position: The position of the cart on the track.
 - Cart Velocity: The velocity of the cart.
-- Pole Angle: The angle of the pole with respect to the vertical axis.
+- Pole Angle: The angle of the pole concerning the vertical axis.
 - Pole Angular Velocity: The angular velocity of the pole.
 
 
@@ -390,13 +422,13 @@ Here are the different observations and their ranges.
 | 2   | Pole Angle            | ~ -0.418 rad (-24°)** | ~ 0.418 rad (24°)** |
 | 3   | Pole Angular Velocity | -Inf                 | Inf                |
 
-From : https://magalimorin18.github.io/reinforcement_learning/td2/discrete.html
+From: https://magalimorin18.github.io/reinforcement_learning/td2/discrete.html
 
-The agent take these 4 inputs from the environment without any scaling and (A) store them in a Q-table or (B) pass them through a small fully-connected network in order to output 2 classes, one for each action (left or right). 
+The agent takes these 4 inputs from the environment without any scaling and (A) stores them in a Q-table or (B) passes them through a small fully connected network to output 2 classes, one for each action (left or right). 
 
 ### Discretization of the env
 
-Unlike the previous exmaple (Cliff Walking), in this environment (Cartpole), our observation space is represented by float values. Even though our DQN approach can deal with that. If we want to use a Q table, we need to discretize our environment by representing our observation space as a finite set of discrete values.
+Unlike the previous example (Cliff Walking), in this environment (Cartpole), our observation space is represented by float values. Even though our DQN approach can deal with that. If we want to use a Q table, we need to discretize our environment by representing our observation space as a finite set of discrete values.
 
 ```python
 
