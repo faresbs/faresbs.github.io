@@ -29,11 +29,12 @@ Here are a few highlights from my professional journey:
 
 # Technical Skills
 
-- **Programming Languages**: Python, C++
-- **Deep Learning Frameworks**: TensorFlow, Keras, PyTorch
+- **Programming Languages**: Python, C++, Javascript, Dart(Flutter)
 - **Libraries & Tools**: NumPy, Pandas, Scikit-learn, OpenCV, TensorRT, ONNX, Git, AWS, GCP, Asure
 - **Deep Learning Frameworks**: TensorFlow, Keras, PyTorch (preferred)
-- **Machine learning**: Data analysis & visualization (Matplotlib, Plotly..etc), Supervised classification and regression ML algorithms,
+- **Machine learning**: Data analysis & visualization (Matplotlib, Plotly..etc), Supervised classification and regression ML algorithms, unsupervised ML algorithms, Statistics, Probability, Calculus and Linear algebra. 
+- **MLops & Cloud**: Git, Docker, Kubernetes, AWS, Google Cloud Platform, Azure ML, MLflow, ClearML
+- **Libraries & Tools**: NumPy, Pandas, Scikit-learn, OpenCV, TensorRT, ONNX
 unsupervised ML algorithms, Advanced statistics, Probability, Advanced Calculus, Linear algebra and optimization
 - **Deep learning (Theoretical & Practical)**: Neural Networks & Convolutional neural networks (CNNs), Recurrent Networks (RNN, GRU
 and LSTM), Transformers (attention-based models), Generative Models (GAN, VAE), Reinforcement Learning (Q-learning, Monte Carlo,
@@ -42,7 +43,7 @@ and LSTM), Generative Models (GAN, VAE), Reinforcement Learning (Q-learning, Sar
 - **Mila Course (Prof. Aaron Courville)** - Representation Learning (IFT 6135) Winter-2019, Grade: A-
 - **Computer Vision**: Image classification and segmentation, Object and anomaly detection, Video and Image Analysis
 - **Speech Recognition**: Lightweight Wakeword Detection, Command detection, ASR, Speech-to-Text and Text-to-Speech
-- **Natural Language Processing**:Text classification, Language modelling, Machine translation
+- **Natural Language Processing**:Text classification, Language modelling, Machine translation, LLMs
 - **Soft Skills**: Worked in high-paced startup environments, Led R&D ML projects, Team Player with efficient communication skills,
 Positive force and a good motivator, Effective in both spoken and written English and French
 
