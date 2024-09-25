@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hand on RL algorithms
+title: Hands on RL algorithms
 subtitle: 
 cover-img: assets/img/posts/2024-07-11/cover.JPG
 thumbnail-img: 
