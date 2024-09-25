@@ -44,5 +44,6 @@ const config = new Configuration(
 )
 
 const openai = new OpenAIApi(config);
+module ex
 '
 
